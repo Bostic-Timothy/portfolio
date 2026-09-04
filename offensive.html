@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Offensive security methodology covering penetration testing, assessment planning, exploitation, and remediation.">
+  <title>Offensive Security | T.J. Bostic</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="site-shell offensive-page">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Return to T.J. Bostic portfolio">
+        <span class="brand-mark">TB</span>
+        <span class="brand-name">T.J. Bostic</span>
+      </a>
+      <nav class="site-nav" aria-label="Offensive security navigation">
+        <a href="#assessments">Assessments</a>
+        <a href="#lifecycle">Lifecycle</a>
+        <a href="#toolkit">Toolkit</a>
+        <a href="#reporting">Reporting</a>
+      </nav>
+      <details class="offensive-mobile-nav">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile offensive security navigation">
+          <a href="#assessments">Assessments</a>
+          <a href="#lifecycle">Lifecycle</a>
+          <a href="#toolkit">Toolkit</a>
+          <a href="#reporting">Reporting</a>
+        </nav>
+      </details>
+      <a class="status-pill" href="index.html">Back to portfolio</a>
+    </header>
+
+    <main id="main-content">
+      <nav class="breadcrumb section-wrap" aria-label="Breadcrumb">
+        <a href="index.html">Main portfolio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Offensive Security</span>
+      </nav>
+
+      <section class="offensive-hero section-wrap" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span>Offensive security / Methodology</p>
+        <h1 id="page-title">Offensive security is a <em>process</em>, not a pile of tools.</h1>
+        <p class="hero-intro">A structured approach to understanding attack paths, validating risk, and translating technical findings into practical remediation guidance.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#lifecycle">View the lifecycle <span aria-hidden="true">&#8595;</span></a>
+          <a class="text-link" href="index.html">Return to portfolio <span aria-hidden="true">&#8594;</span></a>
+        </div>
+      </section>
+
+      <section id="assessments" class="offensive-section section-wrap" aria-labelledby="assessments-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span>01 / Featured assessments</p>
+            <h2 id="assessments-title">Assessment areas</h2>
+          </div>
+          <p class="section-note">Representative engagement types that connect technical testing to clear security decisions.</p>
+        </div>
+        <div class="assessment-grid">
+          <article class="assessment-card">
+            <p class="card-category">Coming Soon / Internal</p>
+            <h3>Internal Network / Active Directory Assessment</h3>
+            <p>Examine identity paths, privilege boundaries, segmentation, and opportunities for lateral movement within an internal environment.</p>
+            <span class="card-link card-status">Case study coming soon</span>
+          </article>
+          <article class="assessment-card">
+            <p class="card-category">Coming Soon / External</p>
+            <h3>External Attack Surface Assessment</h3>
+            <p>Enumerate internet-facing assets, identify exposed services, and prioritize weaknesses that increase external attack paths.</p>
+            <span class="card-link card-status">Case study coming soon</span>
+          </article>
+          <article class="assessment-card">
+            <p class="card-category">Coming Soon / Application</p>
+            <h3>Web Application Assessment</h3>
+            <p>Assess application behavior, access control, authentication, input handling, and business logic against common attack scenarios.</p>
+            <span class="card-link card-status">Case study coming soon</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="lifecycle" class="offensive-section lifecycle-section section-wrap" aria-labelledby="lifecycle-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span>02 / Penetration testing lifecycle</p>
+            <h2 id="lifecycle-title">From scope to remediation</h2>
+          </div>
+          <p class="section-note">Each phase creates context for the next, while preserving authorization, evidence quality, and client safety throughout the engagement.</p>
+        </div>
+
+        <ol class="lifecycle-list">
+          <li class="lifecycle-phase">
+            <div class="phase-marker" aria-hidden="true">01</div>
+            <div class="phase-content">
+              <h3>Planning &amp; Pre-Engagement</h3>
+              <p>Define the authorized scope, rules of engagement, success criteria, communication paths, and handling requirements before testing begins.</p>
+              <ul class="activity-list"><li>Scope and asset confirmation</li><li>Rules of engagement</li><li>Authorization and safety constraints</li><li>Test objectives and schedule</li></ul>
+              <span class="card-link card-status">Case study coming soon</span>
+            </div>
+          </li>
+          <li class="lifecycle-phase">
+            <div class="phase-marker" aria-hidden="true">02</div>
+            <div class="phase-content">
+              <h3>Reconnaissance &amp; OSINT</h3>
+              <p>Identify externally observable information before active interaction with the target.</p>
+              <ul class="activity-list"><li>Domain and DNS research</li><li>Certificate transparency review</li><li>Technology fingerprinting</li><li>Public infrastructure discovery</li><li>Organizational OSINT</li></ul>
+              <span class="card-link card-status">Case study coming soon</span>
+            </div>
+          </li>
+          <li class="lifecycle-phase">
+            <div class="phase-marker" aria-hidden="true">03</div>
+            <div class="phase-content">
+              <h3>Scanning &amp; Enumeration</h3>
+              <p>Use controlled active testing to identify reachable services, application paths, identities, and configuration details.</p>
+              <ul class="activity-list"><li>Port and service discovery</li><li>Directory and endpoint enumeration</li><li>Protocol and banner analysis</li><li>Authenticated surface review</li></ul>
+              <span class="card-link card-status">Case study coming soon</span>
+            </div>
+          </li>
+          <li class="lifecycle-phase">
+            <div class="phase-marker" aria-hidden="true">04</div>
+            <div class="phase-content">
+              <h3>Vulnerability Analysis</h3>
+              <p>Correlate technical observations, configuration weaknesses, and business context to determine which findings warrant validation.</p>
+              <ul class="activity-list"><li>Manual validation</li><li>False-positive reduction</li><li>Exploitability assessment</li><li>Risk and impact analysis</li></ul>
+              <span class="card-link card-status">Case study coming soon</span>
+            </div>
+          </li>
+          <li class="lifecycle-phase">
+            <div class="phase-marker" aria-hidden="true">05</div>
+            <div class="phase-content">
+              <h3>Exploitation</h3>
+              <p>Safely validate material weaknesses within the agreed rules, collecting enough evidence to demonstrate impact without unnecessary disruption.</p>
+              <ul class="activity-list"><li>Proof-of-concept validation</li><li>Access control testing</li><li>Privilege boundary checks</li><li>Evidence capture and rollback</li></ul>
+              <span class="card-link card-status">Case study coming soon</span>
+            </div>
+          </li>
+          <li class="lifecycle-phase">
+            <div class="phase-marker" aria-hidden="true">06</div>
+            <div class="phase-content">
+              <h3>Post-Exploitation</h3>
+              <p>Assess the practical consequences of access by examining persistence, privilege expansion, data exposure, and detection opportunities.</p>
+              <ul class="activity-list"><li>Privilege escalation review</li><li>Identity and trust path analysis</li><li>Controlled data access validation</li><li>Detection and cleanup checks</li></ul>
+              <span class="card-link card-status">Case study coming soon</span>
+            </div>
+          </li>
+          <li class="lifecycle-phase">
+            <div class="phase-marker" aria-hidden="true">07</div>
+            <div class="phase-content">
+              <h3>Reporting &amp; Remediation</h3>
+              <p>Turn validated evidence into prioritized findings, actionable fixes, executive context, and a clear path to retesting.</p>
+              <ul class="activity-list"><li>Technical finding write-ups</li><li>Risk prioritization</li><li>Remediation recommendations</li><li>Retest planning and closure</li></ul>
+              <span class="card-link card-status">Case study coming soon</span>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="toolkit" class="offensive-section section-wrap" aria-labelledby="toolkit-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-line"></span>03 / Tools &amp; techniques</p>
+            <h2 id="toolkit-title">Tools support the method</h2>
+          </div>
+          <p class="section-note">The objective determines the technique; the technique determines the tool.</p>
+        </div>
+        <div class="technique-grid">
+          <article class="technique-group"><h3>Reconnaissance</h3><p>Asset discovery, OSINT correlation, technology identification, and attack surface mapping.</p><ul><li>Passive enumeration</li><li>Service discovery</li><li>Metadata review</li></ul></article>
+          <article class="technique-group"><h3>Web &amp; API Testing</h3><p>Request analysis and manual validation focused on access control, input handling, and application logic.</p><ul><li>Authentication testing</li><li>Authorization testing</li><li>Input validation</li></ul></article>
+          <article class="technique-group"><h3>Network &amp; Identity</h3><p>Protocol analysis and privilege-path review across network services and identity environments.</p><ul><li>Service enumeration</li><li>Trust relationship review</li><li>Privilege boundary analysis</li></ul></article>
+          <article class="technique-group"><h3>Automation &amp; Evidence</h3><p>Lightweight scripting and repeatable evidence collection to improve consistency and reduce avoidable noise.</p><ul><li>Python scripting</li><li>Structured notes</li><li>Reproducible validation</li></ul></article>
+        </div>
+      </section>
+
+      <section id="reporting" class="reporting-section section-wrap" aria-labelledby="reporting-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span>04 / Reporting &amp; remediation</p>
+        <h2 id="reporting-title">Technical testing only creates value when findings can be understood and acted upon.</h2>
+        <div class="reporting-grid">
+          <p>Reporting connects technical evidence to decisions. A clear finding should move from concise context to defensible evidence, business impact, and a practical remediation path.</p>
+          <ul class="reporting-principles"><li><strong>Evidence first</strong><span>Clear reproduction details and scoped supporting evidence.</span></li><li><strong>Risk in context</strong><span>Severity informed by exploitability, exposure, and business impact.</span></li><li><strong>Remediation with direction</strong><span>Specific recommendations that can be assigned, prioritized, and retested.</span></li></ul>
+        </div>
+        <div class="finding-anatomy" aria-labelledby="finding-anatomy-title">
+          <div class="finding-anatomy-heading">
+            <p class="card-category">Finding anatomy</p>
+            <h3 id="finding-anatomy-title">A report structure built for action</h3>
+          </div>
+          <ol class="finding-stack">
+            <li><span class="finding-step">01</span><strong>Executive Summary</strong><span>What matters and why it matters.</span></li>
+            <li><span class="finding-step">02</span><strong>Technical Finding</strong><span>What was observed and validated.</span></li>
+            <li><span class="finding-step">03</span><strong>Evidence</strong><span>Scoped proof that supports the conclusion.</span></li>
+            <li><span class="finding-step">04</span><strong>Business Impact</strong><span>The consequence in operational context.</span></li>
+            <li><span class="finding-step">05</span><strong>Remediation</strong><span>A prioritized path toward risk reduction.</span></li>
+          </ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-wrap">
+      <span>&copy; 2026 T.J. Bostic</span>
+      <span>Offensive security methodology</span>
+      <span class="social-links"><a href="https://github.com/Bostic-Timothy" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/tj-bostic" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+      <a href="index.html">Back to main portfolio &#8594;</a>
+    </footer>
+  </div>
+</body>
+</html>
