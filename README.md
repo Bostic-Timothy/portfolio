@@ -22,8 +22,8 @@ The inquiry form prepares a `mailto:` draft addressed to the existing public con
 - GCIH, GSEC, GFACT, and Security+ were recorded in the prior LinkedIn profile review. GPEN was in progress and is not presented as earned. Ribbon links explain the certification; they are not personal credential-verification links.
 - The attendance project is grounded in the public `Bostic-Timothy/church-attendance-analytics` README. The demo uses its fictional Sunday counts, never real member records. Excel reporting remains planned.
 - The security range is ongoing lab work. No commercial security engagements, customer testimonials, partnerships, or guarantees are asserted.
-- Microsoft 365, Planning Center, and Huntress are examples of established externally operated services, not existing reseller agreements or subscriptions included in an offering. Their official product pages are linked in the site.
-- Launch service scope must stay consistent with the owner's actual capabilities and agreements. The separate cyber-startup discussion was not available in the recent task list during the initial revision.
+- Microsoft 365, Syncro, KeeperMSP, Huntress, Cove, Hudu, and Planning Center are examples of established externally operated services, not existing reseller agreements or subscriptions included in an offering. Their official product pages are linked in the site.
+- Launch scope follows the startup discussion in “Day Trader Explained”: cyber-readiness, awareness training, and operations documentation/planning. Managed IT is a planned, conditional pilot, not an already-operating service. The discussion does not establish active vendors, contracted escalation, completed pilots, or existing client relationships. Illustrative prices and private business/personal details are not published.
 
 ## Validation
 

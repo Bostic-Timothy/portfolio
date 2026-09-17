@@ -58,3 +58,8 @@
 .credential-window:focus-visible { outline: 2px solid #7dd3fc; outline-offset: -2px; }
 .credential-track .credential-copy { max-width: none; }
 @media (prefers-reduced-motion: reduce) { .credentials.enhanced .credential-track { animation: none; } }
+
+.pilot-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; padding: 2rem; background: #111e30; border: 1px solid #37516a; border-radius: 8px; }
+.pilot-panel h3 { font-size: 1.5rem; }.pilot-panel h4 { margin: 0 0 1rem; }.pilot-panel p:not(.eyebrow), .platform-context { color: var(--muted); font-size: .9rem; }.platform-context { margin-top: 1.5rem; }.platform-context a { color: #7dd3fc; text-decoration: underline; }
+.readiness-example { padding: 2rem; border: 1px solid #304057; border-radius: 8px; margin-bottom: 3rem; display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; }.readiness-example h3 { font-size: 1.5rem; }.readiness-example p:not(.eyebrow) { color: var(--muted); font-size: .9rem; }.readiness-example .faq { border-top: 0; }.readiness-example strong { color: #e5e7eb; }
+@media(max-width:800px) { .pilot-panel, .readiness-example { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; } }
