@@ -9,3 +9,8 @@ Thumbs.db
 node_modules/
 dist/
 build/
+
+# Private local configuration
+.env
+.env.*
+!.env.example

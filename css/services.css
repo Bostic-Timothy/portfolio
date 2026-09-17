@@ -69,3 +69,6 @@
 .credentials:not(.enhanced) .credential-track { width: 100%; flex-wrap: wrap; }
 .credentials:not(.enhanced) .credential-track li { width: 50%; padding-block: .7rem; }
 @media (max-width: 600px) { .credentials:not(.enhanced) .credential-track li { width: 100%; } }
+
+.posture-promo { display:flex; align-items:center; gap:3rem; padding-block:3rem; }.posture-promo h2 { font-size:1.8rem; }.posture-promo p:not(.eyebrow) { color:#b0bdd0; max-width:750px; }.posture-promo > a { flex-shrink:0; }
+@media(max-width:800px) { .posture-promo { display:block; }.posture-promo > a { margin-top:1rem; } }
