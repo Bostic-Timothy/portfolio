@@ -101,4 +101,3 @@ $('#verify-form').addEventListener('submit', async event => {
   finally { button.disabled = false; }
 });
 $('#posture-form').hidden = false;
-

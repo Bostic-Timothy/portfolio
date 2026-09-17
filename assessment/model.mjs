@@ -55,4 +55,3 @@ export function buildReport(value, date = new Date()) {
   lines.push('', 'Start by confirming unknowns, then discuss missing and partial practices. Assign an owner and a target date for each action; prioritize using your actual business risks.', '', `NIST small-business guide: ${SOURCE}`, `NIST CSF 2.0: ${CORE}`, 'Independent educational tool by T.J. Bostic; not endorsed by NIST.');
   return { counts, sections, actions, text: lines.join('\n') };
 }
-
