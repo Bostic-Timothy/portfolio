@@ -269,3 +269,8 @@ h3 { font-size: 1.25rem; }
    .offensive-page .site-header { padding: 0 1rem; }
    .offensive-page .brand-name { font-size: .9rem; }
 }
+/* Respect the system motion preference on every page, including methodology. */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}

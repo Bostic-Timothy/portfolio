@@ -72,6 +72,8 @@ document.querySelector('#inquiry-form').addEventListener('submit', event => {
   window.location.href = emailUrl;
 });
 document.querySelector('#message').addEventListener('input', event => event.target.setCustomValidity(''));
+// Expose the form only after its handler can prevent native URL submission.
+document.querySelector('#inquiry-form').hidden = false;
 
 // Duplicate only visual content; screen readers and keyboard users see each credential once.
 const credentialTrack = document.querySelector('.credential-track');
@@ -91,3 +93,5 @@ document.querySelector('#credential-pause').addEventListener('click', event => {
   event.currentTarget.textContent = paused ? 'Resume scrolling' : 'Pause scrolling';
 });
 document.querySelector('.credentials').classList.add('enhanced');
+
+document.querySelector('#credential-pause').hidden = false;
