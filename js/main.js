@@ -1,43 +1,93 @@
-const projects = [
-	{ number: '01', type: 'offensive', label: 'Offensive Security', title: 'Authorized attack-path study', description: 'Planned case study for documenting reconnaissance, enumeration, validation, sanitized evidence, and lessons learned in an authorized lab environment.', tags: ['Planned', 'Recon', 'Web'], year: 'In progress', url: 'offensive.html' },
-	{ number: '02', type: 'cyber-range', label: 'Cyber Range / Security Engineering', title: 'A repeatable environment for practice', description: 'Planned build focused on creating a small, documented environment for practicing security concepts and recording reproducible observations.', tags: ['Planned', 'Lab design'], year: 'Planned' },
-	{ number: '03', type: 'detection', label: 'Detection / Incident Response', title: 'From event to investigation', description: 'Planned project for exploring detection logic, investigation notes, response decisions, and opportunities to improve signal quality.', tags: ['Planned', 'Detection', 'IR'], year: 'Planned' },
-	{ number: '04', type: 'automation', label: 'Automation', title: 'Small scripts, repeatable work', description: 'Planned collection of focused automation experiments for evidence handling, security workflows, and technical documentation.', tags: ['Planned', 'Python', 'Workflow'], year: 'Planned' }
+'use strict';
+
+// Fictional Sunday counts from the public attendance project's example data.
+const attendance = [
+  { date: 'Jan 04', adults: 82, youth: 24, children: 31, visitors: 6 },
+  { date: 'Jan 11', adults: 78, youth: 23, children: 29, visitors: 5 },
+  { date: 'Jan 18', adults: 88, youth: 27, children: 34, visitors: 7 },
+  { date: 'Jan 25', adults: 91, youth: 26, children: 33, visitors: 8 }
 ];
-
-const projectGrid = document.querySelector('#project-grid');
-const filterButtons = document.querySelectorAll('.filter-button');
-
-function renderProjects(filter = 'all') {
-	projectGrid.innerHTML = projects.filter((project) => filter === 'all' || project.type === filter).map((project) => `<article class="project-card"><div><div class="project-meta"><span>${project.number} / ${project.label}</span><span>${project.year}</span></div><h3>${project.title}</h3><p>${project.description}</p></div><div class="project-bottom"><div class="project-tags">${project.tags.map((tag) => `<span>${tag}</span>`).join('')}</div>${project.url ? `<a class="project-arrow" href="${project.url}" aria-label="Open ${project.label} page">&#8599;</a>` : '<span class="project-arrow" aria-hidden="true">&#8599;</span>'}</div></article>`).join('');
+let activeView = 'all';
+const viewLabels = { all: 'All attendees', adults: 'Adults', young: 'Youth and children' };
+function countFor(row, view) {
+  if (view === 'adults') return row.adults;
+  if (view === 'young') return row.youth + row.children;
+  return row.adults + row.youth + row.children + row.visitors;
 }
-
-renderProjects();
-filterButtons.forEach((button) => button.addEventListener('click', () => {
-	filterButtons.forEach((item) => item.classList.remove('active'));
-	button.classList.add('active');
-	renderProjects(button.dataset.filter);
-}));
-
-const menuToggle = document.querySelector('.menu-toggle');
-const mobileNav = document.querySelector('.mobile-nav');
-menuToggle.addEventListener('click', () => {
-	const isOpen = mobileNav.classList.toggle('open');
-	menuToggle.setAttribute('aria-expanded', isOpen);
-	mobileNav.setAttribute('aria-hidden', !isOpen);
+function renderAttendance(view) {
+  activeView = view;
+  const counts = attendance.map(row => countFor(row, view));
+  document.querySelector('#demo-average').textContent = Math.round(counts.reduce((sum, value) => sum + value, 0) / counts.length);
+  const change = Math.round((counts[counts.length - 1] - counts[0]) / counts[0] * 100);
+  document.querySelector('#demo-change').textContent = `${change >= 0 ? '+' : ''}${change}% first to last Sunday`;
+  document.querySelector('#demo-rows').replaceChildren(...attendance.map((row, index) => {
+    const tr = document.createElement('tr');
+    const date = document.createElement('th');
+    date.scope = 'row';
+    date.textContent = row.date;
+    const count = document.createElement('td');
+    count.textContent = counts[index];
+    tr.append(date, count);
+    return tr;
+  }));
+  document.querySelector('.demo-table thead th:last-child').textContent = viewLabels[view];
+  document.querySelectorAll('.demo-bars span').forEach((bar, index) => bar.style.setProperty('--bar', `${counts[index] / Math.max(...counts) * 100}%`));
+  document.querySelectorAll('[data-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === view)));
+}
+document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => renderAttendance(button.dataset.view)));
+renderAttendance(activeView);
+document.querySelector('#download-demo').addEventListener('click', () => {
+  const csv = ['Fictional sample data - not real church records', `Date,${viewLabels[activeView]}`, ...attendance.map(row => `${row.date} 2026,${countFor(row, activeView)}`)].join('\r\n');
+  const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `fictional-attendance-${activeView}.csv`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
-mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-	mobileNav.classList.remove('open');
-	menuToggle.setAttribute('aria-expanded', 'false');
-	mobileNav.setAttribute('aria-hidden', 'true');
-}));
 
-const revealObserver = new IntersectionObserver((entries) => {
-	entries.forEach((entry) => {
-		if (entry.isIntersecting) {
-			entry.target.classList.add('visible');
-			revealObserver.unobserve(entry.target);
-		}
-	});
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+const menu = document.querySelector('.service-menu');
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
+menu.addEventListener('keydown', event => {
+  if (event.key === 'Escape') { menu.open = false; menu.querySelector('summary').focus(); }
+});
+document.querySelectorAll('[data-service]').forEach(link => link.addEventListener('click', () => {
+  document.querySelector('#service').value = link.dataset.service;
+}));
+document.querySelector('#inquiry-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const organization = document.querySelector('#organization').value.trim();
+  const service = document.querySelector('#service').value;
+  const message = document.querySelector('#message').value.trim();
+  if (!message) {
+    document.querySelector('#message').setCustomValidity('Please describe what you would like help with.');
+    document.querySelector('#message').reportValidity();
+    return;
+  }
+  const body = `Hello T.J.,\n\nI would like to discuss: ${service}\nOrganization: ${organization || 'Not specified'}\n\n${message}\n`;
+  const emailUrl = `mailto:tab17b@acu.edu?subject=${encodeURIComponent(`Project inquiry: ${service}`)}&body=${encodeURIComponent(body)}`;
+  document.querySelector('#inquiry-status').textContent = 'Your email app has been requested. Review and send the draft there. If it does not open, email tab17b@acu.edu directly. Nothing has been sent by this site.';
+  window.location.href = emailUrl;
+});
+document.querySelector('#message').addEventListener('input', event => event.target.setCustomValidity(''));
+
+// Duplicate only visual content; screen readers and keyboard users see each credential once.
+const credentialTrack = document.querySelector('.credential-track');
+Array.from(credentialTrack.children).forEach(item => {
+  const duplicate = item.cloneNode(true);
+  duplicate.setAttribute('aria-hidden', 'true');
+  const anchor = duplicate.querySelector('a');
+  const visual = document.createElement('span');
+  visual.className = 'credential-copy';
+  visual.append(...anchor.childNodes);
+  anchor.replaceWith(visual);
+  credentialTrack.append(duplicate);
+});
+document.querySelector('#credential-pause').addEventListener('click', event => {
+  const paused = document.querySelector('.credentials').classList.toggle('paused');
+  event.currentTarget.setAttribute('aria-pressed', String(paused));
+  event.currentTarget.textContent = paused ? 'Resume scrolling' : 'Pause scrolling';
+});
+document.querySelector('.credentials').classList.add('enhanced');
